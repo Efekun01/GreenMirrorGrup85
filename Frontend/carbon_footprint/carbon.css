@@ -1,0 +1,285 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+header {
+    background-color: #153315;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 200px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-right: 120px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #a9d6a9;
+}
+
+.button-container {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 8px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.giris-yap {
+    background-color: #79b900;
+    color: white;
+    
+}
+
+.uye-ol {
+    background-color: #79b900;
+    color: #fff;
+    
+}
+
+.giris-yap:hover, .uye-ol:hover {
+    background-color: #e55a00;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    padding: 120px 110px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+    gap: 40px;
+}
+
+.hero-left {
+    text-align: left;
+    max-width: 400px;
+}
+
+.hero-left h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.btn {
+    background-color: #79b900;
+    border: none;
+    padding: 12px 40px;
+    color: white;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 1em;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.progress-section {
+    background-color: white;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    
+    width: 360px;
+    height: 200px;
+}
+
+.progress-section p {
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.food-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.food-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em;
+    flex: 1;
+    text-align: center;
+}
+
+.progress-circle {
+    width: 80px;
+    height: 80px;
+    background: conic-gradient(#a3d7a3 115.2deg, #f0f0f0 0);
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.progress-circle span::after {
+    content: '%';
+}
+
+.progress-section p:last-child {
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
+}
+
+.suggestions h3 {
+    margin-bottom: 15px;
+    margin-top: 85px;
+    color: #333;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.green-icon {
+    width: 40px;
+}
+
+.suggestion-item p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+    text-align: left;
+    
+}
+
+.hero-right {
+    max-width: 400px;
+}
+
+.tree-image {
+    height: auto;
+    width: 100%;
+    
+}
+
+footer {
+    background-color: #153315;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.contact-info a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 5px 0;
+}
+
+.contact-info h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info ul li {
+    margin-bottom: 5px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.contact {
+    text-align: left;
+}
+
+.contact h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contact p {
+    margin: 5px 0;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.phone-icon, .email-icon {
+    margin-right: 5px;
+    color: #a9d6a9;
+}
+
