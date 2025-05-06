@@ -1,4 +1,3 @@
-# request.py
 from fastapi import APIRouter, Depends, HTTPException, Security, Body
 from AI.ai import ask_gemiai
 from AI.ai_models import AIRequest
@@ -10,7 +9,6 @@ from typing import List
 router = APIRouter()
 
 load_dotenv()
-
 
 API_KEY = os.getenv("API_KEY", "123456")
 api_key_header = APIKeyHeader(name="X_API_Key")

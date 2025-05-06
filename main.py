@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 from api import users, ingredients, recipes, carbon, admin
 import os
@@ -8,6 +9,15 @@ from AI import ai,ai_models,request
 load_dotenv()
 
 app = FastAPI(title="GreenMirror AI API")
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def custom_openapi():
     if app.openapi_schema:

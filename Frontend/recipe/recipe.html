@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarif Önerisi</title>
-    <link rel="icon" type="image/png" href="../homepage/leaf1.png">
     <link rel="stylesheet" href="recipe.css">
 </head>
 <body>
@@ -14,59 +13,61 @@
             <a href="../homepage/home.html" class="nav-link">AnaSayfa</a>
             <a href="../carbon_footprint/carbon.html" class="nav-link">Bugün Ne Yedin?</a>
             <a href="recipe.html" class="nav-link">Tarif Önerisi</a>
-            <div class="button-container">
-                <a href="../sign_in/sign_in.html" class="btn giris-yap">Giriş Yap</a>
-                <a href="../sign_up/sign_up.html" class="btn uye-ol">Üye Ol</a>
-            </div>
         </nav>
     </header>
-    <main>
-        <div class="content-wrapper">
-            <section class="hero">
-                <h1>Dolabındaki <br> Malzemelerle Doğaya <br>Dost Tarifler Hazırla!</h1>
-                <input type="text" placeholder="Malzemelerinizi Girin" class="input-field">
-                <button class="btn">Hesapla</button>
-            </section>
 
-            <section class="recipe-card">
-                <div class="recipe-header">
-                    <h2>Mercimek Çorbası</h2>
-                    <img src="" alt="Mercimek Çorbası Resmi" class="recipe-image">
-                </div>
-                <ul class="ingredients-list">
-                    <li>2 su bardağı kırmızı mercimek</li>
-                    <li>1 adet soğan</li>
-                    <li>2 yemek kaşığı un</li>
-                    <li>1 adet havuç</li>
-                    <li>Yarım çay kaşığı biber ya da domates salçası (rengi kırmızı olsun istenirse artırılabilir ya da hiç kullanılmayabilir)</li>
-                    <li>Tuz ve karabiber</li>
-                    <li>1 litre su</li>
-                    <li>Yarım çay kaşığı karabiber</li>
-                </ul>
-                <p class="co2-saving">Bugün 2.5 kg CO2 tasarrufu sağladınız.</p>
-            </section>
-        </div>
+    <main>
+        <section class="hero">
+            <h1>Dolabındaki Malzemelerle Doğaya Dost Tarifler Hazırla!</h1>
+            <input type="text" placeholder="Malzemelerinizi girin (örn. mercimek, havuç)" class="input-field">
+            <button class="btn">Hesapla</button>
+        </section>
+
+        <section class="recipe-card" id="recipe-card" style="display:none;">
+            <div class="recipe-header">
+                <h2 id="recipe-title"></h2>
+            </div>
+            <p id="recipe-text"></p>
+        </section>
     </main>
 
-
-    <footer id="contact">
-        
-        <div class="footer-bottom" >
+    <footer>
+        <div class="footer-bottom">
             <div class="contact-info">
-                <h4>Sayfalar</h4>
+                <h4>İletişim</h4>
                 <ul>
-                    <li><a href="home.html">Anasayfa</a></li>
-                    <li><a href="../carbon_footprint/carbon.html">Bugün Ne Yedin?</a></li>
-                    <li><a href="../recipe/recipe.html">Tarif Önerisi</a></li>
+                    <li><a href="tel:+1234567890" class="phone-icon">Telefon: +1234567890</a></li>
+                    <li><a href="mailto:info@greenmirror.com" class="email-icon">Email: info@greenmirror.com</a></li>
                 </ul>
             </div>
-            <div class="contact">
-                <h4>İletişim</h4>
-                <p><span class="phone-icon">📞</span> 0543 444 96 58</p>
-                <p><span class="email-icon">✉️</span> abc@gmail.com</p>
-            </div>
         </div>
-        <p>Tüm Hakları Saklıdır © 2025 GreenMirror</p>
     </footer>
+
+    <script>
+        document.querySelector(".btn").addEventListener("click", async () => {
+            const input = document.querySelector(".input-field").value;
+            const ingredients = input.split(",").map(i => i.trim());
+
+            const response = await fetch("http://localhost:8000/ai/recipe_suggest", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X_API_Key": "123456"
+                },
+                body: JSON.stringify({ ingredients })
+            });
+
+            const data = await response.json();
+            const recipeCard = document.getElementById("recipe-card");
+
+            if (data.recipe_suggestion) {
+                recipeCard.style.display = "block";
+                document.getElementById("recipe-title").innerText = "Tarif Önerisi";
+                document.getElementById("recipe-text").innerText = data.recipe_suggestion;
+            } else {
+                alert("Tarif alınamadı.");
+            }
+        });
+    </script>
 </body>
 </html>
