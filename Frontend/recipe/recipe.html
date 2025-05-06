@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarif Önerisi</title>
+    <link rel="stylesheet" href="recipe.css">
+</head>
+<body>
+    <header>
+        <div class="logo">GreenMirror</div>
+        <nav>
+            <a href="../homepage/home.html" class="nav-link">AnaSayfa</a>
+            <a href="../carbon_footprint/carbon.html" class="nav-link">Bugün Ne Yedin?</a>
+            <a href="recipe.html" class="nav-link">Tarif Önerisi</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Dolabındaki Malzemelerle Doğaya Dost Tarifler Hazırla!</h1>
+            <input type="text" placeholder="Malzemelerinizi girin (örn. mercimek, havuç)" class="input-field">
+            <button class="btn">Hesapla</button>
+        </section>
+
+        <section class="recipe-card" id="recipe-card" style="display:none;">
+            <div class="recipe-header">
+                <h2 id="recipe-title"></h2>
+            </div>
+            <p id="recipe-text"></p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <div class="contact-info">
+                <h4>İletişim</h4>
+                <ul>
+                    <li><a href="tel:+1234567890" class="phone-icon">Telefon: +1234567890</a></li>
+                    <li><a href="mailto:info@greenmirror.com" class="email-icon">Email: info@greenmirror.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector(".btn").addEventListener("click", async () => {
+            const input = document.querySelector(".input-field").value;
+            const ingredients = input.split(",").map(i => i.trim());
+
+            const response = await fetch("http://localhost:8000/ai/recipe_suggest", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X_API_Key": "123456"
+                },
+                body: JSON.stringify({ ingredients })
+            });
+
+            const data = await response.json();
+            const recipeCard = document.getElementById("recipe-card");
+
+            if (data.recipe_suggestion) {
+                recipeCard.style.display = "block";
+                document.getElementById("recipe-title").innerText = "Tarif Önerisi";
+                document.getElementById("recipe-text").innerText = data.recipe_suggestion;
+            } else {
+                alert("Tarif alınamadı.");
+            }
+        });
+    </script>
+</body>
+</html>
