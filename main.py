@@ -3,6 +3,7 @@ from fastapi.openapi.utils import get_openapi
 from api import users, ingredients, recipes, carbon, admin
 import os
 from dotenv import load_dotenv
+from AI import ai,ai_models,request
 
 load_dotenv()
 
@@ -27,3 +28,4 @@ app.include_router(ingredients.router)
 app.include_router(recipes.router)
 app.include_router(carbon.router)
 app.include_router(admin.router)
+app.include_router(request.router)
